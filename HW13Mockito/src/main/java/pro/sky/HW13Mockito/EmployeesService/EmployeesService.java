@@ -13,21 +13,16 @@ import java.util.List;
 public class EmployeesService {
 
 
-    List<Employees> employees = new ArrayList<>(List.of(
+    static List<Employees> employees = new ArrayList<>(List.of(
 
-            new Employees("Иванов", "Иван", "1", 105_000),
-            new Employees("Иванов", "Евгений", "2", 100_000),
-            new Employees("Сидоров", "Иван", "1", 84_000),
-            new Employees("Зверев", "Михаил", "3", 300_000),
-            new Employees("Клюева",  "Людмила", "5", 250_000),
-            new Employees("Иванов", "Егор", "3", 150_000),
-            new Employees("Кузнецов","Сергей", "3", 100_000),
-            new Employees("Клоков", "Сергей", "4", 90_000),
-            new Employees("Куркова", "Светлана", "2", 95_000),
-            new Employees("Михалева", "Елена", "1", 100_000)
+            new Employees("Иванов", "Иван", 1, 105_000),
+            new Employees("Сидоров", "Иван", 1, 84_000),
+            new Employees("Клюева",  "Людмила", 2, 250_000),
+            new Employees("Иванов", "Евгений", 2, 100_000)
     ));
 
-    public Employees addEmployee(Employees employee) {
+    public static Employees addEmployee(String lastName, String firstName, int departmentId, int salaryOfEmployee) {
+        Employees employee = new Employees(lastName, firstName, departmentId, salaryOfEmployee);
         if (employees.contains(employee)){
             throw new EmployeeAlreadyAddedException();
         }
@@ -37,14 +32,16 @@ public class EmployeesService {
         }
         throw new EmployeeStorageIsFullException();
     }
-    public Employees removeEmployee(Employees employee) {
+    public Employees removeEmployee(String lastName, String firstName, int departmentId, int salaryOfEmployee) {
+        Employees employee = new Employees(lastName, firstName, departmentId, salaryOfEmployee);
         if (!employees.contains(employee)){
             throw new EmployeeNotFoundException();
         }
         employees.remove(employee);
         return employee;
     }
-    public Employees findEmployee(Employees employee) {
+    public Employees findEmployee(String lastName, String firstName, int departmentId, int salaryOfEmployee) {
+        Employees employee = new Employees(lastName, firstName, departmentId, salaryOfEmployee);
         if (!employees.contains(employee)){
             throw new EmployeeNotFoundException();
         }

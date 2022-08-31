@@ -6,11 +6,11 @@ public class Employees {
         private final String lastName;
         private final String firstName;
 
-        private final String departmentId;
+        private final int departmentId;
         private final Integer salaryOfEmployee;
 
 
-        public Employees(String lastName, String firstName, String departmentId, Integer salaryOfEmployee) {
+        public Employees(String lastName, String firstName, int departmentId, Integer salaryOfEmployee) {
             this.firstName = lastName;
             this.lastName = firstName;
             this.departmentId = departmentId;
@@ -26,7 +26,7 @@ public class Employees {
         return lastName;
     }
 
-    public String getDepartmentId() {
+    public int getDepartmentId() {
             return departmentId;
         }
 
